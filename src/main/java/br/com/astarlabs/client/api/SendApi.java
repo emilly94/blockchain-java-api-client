@@ -23,6 +23,7 @@ import br.com.astarlabs.client.Configuration;
 import br.com.astarlabs.client.Pair;
 import br.com.astarlabs.client.ProgressRequestBody;
 import br.com.astarlabs.client.ProgressResponseBody;
+import br.com.astarlabs.client.model.BlockchainNetwork;
 import br.com.astarlabs.client.model.SingleResult;
 
 import java.io.IOException;
@@ -52,7 +53,7 @@ public class SendApi {
     }
 
     /* Build call for sendFile */
-    private com.squareup.okhttp.Call sendFileCall(String token, Integer account, String user, String password, String base64, String coin, Integer test, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    private com.squareup.okhttp.Call sendFileCall(String token, Integer account, String user, String password, String base64, BlockchainNetwork blockchainNetwork, Integer test, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         Object localVarPostBody = null;
         
         // create path and map variables
@@ -73,8 +74,8 @@ public class SendApi {
         localVarFormParams.put("pass", password);
         if (base64 != null)
         localVarFormParams.put("base64", base64);
-        if (coin != null)
-        localVarFormParams.put("coin", coin);
+        if (blockchainNetwork != null)
+        localVarFormParams.put("coin", blockchainNetwork.getName());
         if (test != null)
         localVarFormParams.put("test", test);
 
@@ -106,8 +107,8 @@ public class SendApi {
         return apiClient.buildCall(localVarPath, "POST", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
     }
     
-    @SuppressWarnings("rawtypes")
-    private com.squareup.okhttp.Call sendFileValidateBeforeCall(String token, Integer account, String user, String password, String base64, String coin, Integer test, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+
+    private com.squareup.okhttp.Call sendFileValidateBeforeCall(String token, Integer account, String user, String password, String base64, BlockchainNetwork blockchainNetwork, Integer test, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         
         // verify the required parameter 'token' is set
         if (token == null) {
@@ -135,7 +136,7 @@ public class SendApi {
         }
         
         // verify the required parameter 'coin' is set
-        if (coin == null) {
+        if (blockchainNetwork == null) {
             throw new ApiException("Missing the required parameter 'coin' when calling sendFile(Async)");
         }
         
@@ -145,7 +146,7 @@ public class SendApi {
         }
         
         
-        com.squareup.okhttp.Call call = sendFileCall(token, account, user, password, base64, coin, test, progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = sendFileCall(token, account, user, password, base64, blockchainNetwork, test, progressListener, progressRequestListener);
         return call;
 
         
@@ -167,8 +168,8 @@ public class SendApi {
      * @return SingleResult
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public SingleResult sendFile(String token, Integer account, String user, String password, String base64, String coin, Integer test) throws ApiException {
-        ApiResponse<SingleResult> resp = sendFileWithHttpInfo(token, account, user, password, base64, coin, test);
+    public SingleResult sendFile(String token, Integer account, String user, String password, String base64, BlockchainNetwork blockchainNetwork, Integer test) throws ApiException {
+        ApiResponse<SingleResult> resp = sendFileWithHttpInfo(token, account, user, password, base64, blockchainNetwork, test);
         return resp.getData();
     }
 
@@ -185,8 +186,8 @@ public class SendApi {
      * @return ApiResponse&lt;SingleResult&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<SingleResult> sendFileWithHttpInfo(String token, Integer account, String user, String password, String base64, String coin, Integer test) throws ApiException {
-        com.squareup.okhttp.Call call = sendFileValidateBeforeCall(token, account, user, password, base64, coin, test, null, null);
+    public ApiResponse<SingleResult> sendFileWithHttpInfo(String token, Integer account, String user, String password, String base64, BlockchainNetwork blockchainNetwork, Integer test) throws ApiException {
+        com.squareup.okhttp.Call call = sendFileValidateBeforeCall(token, account, user, password, base64, blockchainNetwork, test, null, null);
         Type localVarReturnType = new TypeToken<SingleResult>(){}.getType();
         return apiClient.execute(call, localVarReturnType);
     }
@@ -205,7 +206,7 @@ public class SendApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public com.squareup.okhttp.Call sendFileAsync(String token, Integer account, String user, String password, String base64, String coin, Integer test, final ApiCallback<SingleResult> callback) throws ApiException {
+    public com.squareup.okhttp.Call sendFileAsync(String token, Integer account, String user, String password, String base64, BlockchainNetwork blockchainNetwork, Integer test, final ApiCallback<SingleResult> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -226,13 +227,13 @@ public class SendApi {
             };
         }
 
-        com.squareup.okhttp.Call call = sendFileValidateBeforeCall(token, account, user, password, base64, coin, test, progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = sendFileValidateBeforeCall(token, account, user, password, base64, blockchainNetwork, test, progressListener, progressRequestListener);
         Type localVarReturnType = new TypeToken<SingleResult>(){}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
     }
     /* Build call for sendPayAddress */
-    private com.squareup.okhttp.Call sendPayAddressCall(String token, Integer account, String user, String password, String address, String coin, Integer test, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    private com.squareup.okhttp.Call sendPayAddressCall(String token, Integer account, String user, String password, String address, BlockchainNetwork blockchainNetwork, Integer test, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         Object localVarPostBody = null;
         
         // create path and map variables
@@ -253,8 +254,8 @@ public class SendApi {
         localVarFormParams.put("pass", password);
         if (address != null)
         localVarFormParams.put("address", address);
-        if (coin != null)
-        localVarFormParams.put("coin", coin);
+        if (blockchainNetwork != null)
+        localVarFormParams.put("coin", blockchainNetwork.getName());
         if (test != null)
         localVarFormParams.put("test", test);
 
@@ -287,7 +288,7 @@ public class SendApi {
     }
     
     @SuppressWarnings("rawtypes")
-    private com.squareup.okhttp.Call sendPayAddressValidateBeforeCall(String token, Integer account, String user, String password, String address, String coin, Integer test, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    private com.squareup.okhttp.Call sendPayAddressValidateBeforeCall(String token, Integer account, String user, String password, String address, BlockchainNetwork blockchainNetwork, Integer test, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         
         // verify the required parameter 'token' is set
         if (token == null) {
@@ -315,7 +316,7 @@ public class SendApi {
         }
         
         // verify the required parameter 'coin' is set
-        if (coin == null) {
+        if (blockchainNetwork == null) {
             throw new ApiException("Missing the required parameter 'coin' when calling sendPayAddress(Async)");
         }
         
@@ -325,7 +326,7 @@ public class SendApi {
         }
         
         
-        com.squareup.okhttp.Call call = sendPayAddressCall(token, account, user, password, address, coin, test, progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = sendPayAddressCall(token, account, user, password, address, blockchainNetwork, test, progressListener, progressRequestListener);
         return call;
 
         
@@ -347,8 +348,8 @@ public class SendApi {
      * @return SingleResult
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public SingleResult sendPayAddress(String token, Integer account, String user, String password, String address, String coin, Integer test) throws ApiException {
-        ApiResponse<SingleResult> resp = sendPayAddressWithHttpInfo(token, account, user, password, address, coin, test);
+    public SingleResult sendPayAddress(String token, Integer account, String user, String password, String address, BlockchainNetwork blockchainNetwork, Integer test) throws ApiException {
+        ApiResponse<SingleResult> resp = sendPayAddressWithHttpInfo(token, account, user, password, address, blockchainNetwork, test);
         return resp.getData();
     }
 
@@ -365,8 +366,8 @@ public class SendApi {
      * @return ApiResponse&lt;SingleResult&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<SingleResult> sendPayAddressWithHttpInfo(String token, Integer account, String user, String password, String address, String coin, Integer test) throws ApiException {
-        com.squareup.okhttp.Call call = sendPayAddressValidateBeforeCall(token, account, user, password, address, coin, test, null, null);
+    public ApiResponse<SingleResult> sendPayAddressWithHttpInfo(String token, Integer account, String user, String password, String address, BlockchainNetwork blockchainNetwork, Integer test) throws ApiException {
+        com.squareup.okhttp.Call call = sendPayAddressValidateBeforeCall(token, account, user, password, address, blockchainNetwork, test, null, null);
         Type localVarReturnType = new TypeToken<SingleResult>(){}.getType();
         return apiClient.execute(call, localVarReturnType);
     }
@@ -385,7 +386,7 @@ public class SendApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public com.squareup.okhttp.Call sendPayAddressAsync(String token, Integer account, String user, String password, String address, String coin, Integer test, final ApiCallback<SingleResult> callback) throws ApiException {
+    public com.squareup.okhttp.Call sendPayAddressAsync(String token, Integer account, String user, String password, String address, BlockchainNetwork blockchainNetwork, Integer test, final ApiCallback<SingleResult> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -406,13 +407,13 @@ public class SendApi {
             };
         }
 
-        com.squareup.okhttp.Call call = sendPayAddressValidateBeforeCall(token, account, user, password, address, coin, test, progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = sendPayAddressValidateBeforeCall(token, account, user, password, address, blockchainNetwork, test, progressListener, progressRequestListener);
         Type localVarReturnType = new TypeToken<SingleResult>(){}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
     }
     /* Build call for sendString */
-    private com.squareup.okhttp.Call sendStringCall(String token, Integer account, String user, String password, String string, String coin, Integer test, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    private com.squareup.okhttp.Call sendStringCall(String token, Integer account, String user, String password, String string, BlockchainNetwork blockchainNetwork, Integer test, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         Object localVarPostBody = null;
         
         // create path and map variables
@@ -433,8 +434,8 @@ public class SendApi {
         localVarFormParams.put("pass", password);
         if (string != null)
         localVarFormParams.put("string", string);
-        if (coin != null)
-        localVarFormParams.put("coin", coin);
+        if (blockchainNetwork != null)
+        localVarFormParams.put("coin", blockchainNetwork.getName());
         if (test != null)
         localVarFormParams.put("test", test);
 
@@ -467,7 +468,7 @@ public class SendApi {
     }
     
     @SuppressWarnings("rawtypes")
-    private com.squareup.okhttp.Call sendStringValidateBeforeCall(String token, Integer account, String user, String password, String string, String coin, Integer test, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    private com.squareup.okhttp.Call sendStringValidateBeforeCall(String token, Integer account, String user, String password, String string, BlockchainNetwork blockchainNetwork, Integer test, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         
         // verify the required parameter 'token' is set
         if (token == null) {
@@ -495,7 +496,7 @@ public class SendApi {
         }
         
         // verify the required parameter 'coin' is set
-        if (coin == null) {
+        if (blockchainNetwork == null) {
             throw new ApiException("Missing the required parameter 'coin' when calling sendString(Async)");
         }
         
@@ -505,7 +506,7 @@ public class SendApi {
         }
         
         
-        com.squareup.okhttp.Call call = sendStringCall(token, account, user, password, string, coin, test, progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = sendStringCall(token, account, user, password, string, blockchainNetwork, test, progressListener, progressRequestListener);
         return call;
 
         
@@ -527,8 +528,8 @@ public class SendApi {
      * @return SingleResult
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public SingleResult sendString(String token, Integer account, String user, String password, String string, String coin, Integer test) throws ApiException {
-        ApiResponse<SingleResult> resp = sendStringWithHttpInfo(token, account, user, password, string, coin, test);
+    public SingleResult sendString(String token, Integer account, String user, String password, String string, BlockchainNetwork blockchainNetwork, Integer test) throws ApiException {
+        ApiResponse<SingleResult> resp = sendStringWithHttpInfo(token, account, user, password, string, blockchainNetwork, test);
         return resp.getData();
     }
 
@@ -545,8 +546,8 @@ public class SendApi {
      * @return ApiResponse&lt;SingleResult&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<SingleResult> sendStringWithHttpInfo(String token, Integer account, String user, String password, String string, String coin, Integer test) throws ApiException {
-        com.squareup.okhttp.Call call = sendStringValidateBeforeCall(token, account, user, password, string, coin, test, null, null);
+    public ApiResponse<SingleResult> sendStringWithHttpInfo(String token, Integer account, String user, String password, String string, BlockchainNetwork blockchainNetwork, Integer test) throws ApiException {
+        com.squareup.okhttp.Call call = sendStringValidateBeforeCall(token, account, user, password, string, blockchainNetwork, test, null, null);
         Type localVarReturnType = new TypeToken<SingleResult>(){}.getType();
         return apiClient.execute(call, localVarReturnType);
     }
@@ -565,7 +566,7 @@ public class SendApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public com.squareup.okhttp.Call sendStringAsync(String token, Integer account, String user, String password, String string, String coin, Integer test, final ApiCallback<SingleResult> callback) throws ApiException {
+    public com.squareup.okhttp.Call sendStringAsync(String token, Integer account, String user, String password, String string, BlockchainNetwork blockchainNetwork, Integer test, final ApiCallback<SingleResult> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -586,14 +587,14 @@ public class SendApi {
             };
         }
 
-        com.squareup.okhttp.Call call = sendStringValidateBeforeCall(token, account, user, password, string, coin, test, progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = sendStringValidateBeforeCall(token, account, user, password, string, blockchainNetwork, test, progressListener, progressRequestListener);
         Type localVarReturnType = new TypeToken<SingleResult>(){}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
     }
     
     /* Build call for sendHash */
-    private com.squareup.okhttp.Call sendHashCall(String token, Integer account, String user, String password, String hash, String coin, Integer test, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    private com.squareup.okhttp.Call sendHashCall(String token, Integer account, String user, String password, String hash, BlockchainNetwork blockchainNetwork, Integer test, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         Object localVarPostBody = null;
         
         // create path and map variables
@@ -614,8 +615,8 @@ public class SendApi {
         localVarFormParams.put("pass", password);
         if (hash != null)
         localVarFormParams.put("hash", hash);
-        if (coin != null)
-        localVarFormParams.put("coin", coin);
+        if (blockchainNetwork != null)
+        localVarFormParams.put("coin", blockchainNetwork.getName());
         if (test != null)
         localVarFormParams.put("test", test);
 
@@ -649,7 +650,7 @@ public class SendApi {
     }
     
     @SuppressWarnings("rawtypes")
-    private com.squareup.okhttp.Call sendHashValidateBeforeCall(String token, Integer account, String user, String password, String hash, String coin, Integer test, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    private com.squareup.okhttp.Call sendHashValidateBeforeCall(String token, Integer account, String user, String password, String hash, BlockchainNetwork blockchainNetwork, Integer test, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         
         // verify the required parameter 'token' is set
         if (token == null) {
@@ -677,7 +678,7 @@ public class SendApi {
         }
         
         // verify the required parameter 'coin' is set
-        if (coin == null) {
+        if (blockchainNetwork == null) {
             throw new ApiException("Missing the required parameter 'coin' when calling sendString(Async)");
         }
         
@@ -687,7 +688,7 @@ public class SendApi {
         }
         
         
-        com.squareup.okhttp.Call call = sendHashCall(token, account, user, password, hash, coin, test, progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = sendHashCall(token, account, user, password, hash, blockchainNetwork, test, progressListener, progressRequestListener);
         return call;
 
         
@@ -709,8 +710,8 @@ public class SendApi {
      * @return SingleResult
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public SingleResult sendHash(String token, Integer account, String user, String password, String hash, String coin, Integer test) throws ApiException {
-        ApiResponse<SingleResult> resp = sendHashWithHttpInfo(token, account, user, password, hash, coin, test);
+    public SingleResult sendHash(String token, Integer account, String user, String password, String hash, BlockchainNetwork blockchainNetwork, Integer test) throws ApiException {
+        ApiResponse<SingleResult> resp = sendHashWithHttpInfo(token, account, user, password, hash, blockchainNetwork, test);
         return resp.getData();
     }
 
@@ -727,8 +728,8 @@ public class SendApi {
      * @return ApiResponse&lt;SingleResult&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<SingleResult> sendHashWithHttpInfo(String token, Integer account, String user, String password, String hash, String coin, Integer test) throws ApiException {
-        com.squareup.okhttp.Call call = sendHashValidateBeforeCall(token, account, user, password, hash, coin, test, null, null);
+    public ApiResponse<SingleResult> sendHashWithHttpInfo(String token, Integer account, String user, String password, String hash, BlockchainNetwork blockchainNetwork, Integer test) throws ApiException {
+        com.squareup.okhttp.Call call = sendHashValidateBeforeCall(token, account, user, password, hash, blockchainNetwork, test, null, null);
         Type localVarReturnType = new TypeToken<SingleResult>(){}.getType();
         return apiClient.execute(call, localVarReturnType);
     }
@@ -747,7 +748,7 @@ public class SendApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public com.squareup.okhttp.Call sendHashAsync(String token, Integer account, String user, String password, String hash, String coin, Integer test, final ApiCallback<SingleResult> callback) throws ApiException {
+    public com.squareup.okhttp.Call sendHashAsync(String token, Integer account, String user, String password, String hash, BlockchainNetwork blockchainNetwork, Integer test, final ApiCallback<SingleResult> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -768,7 +769,7 @@ public class SendApi {
             };
         }
 
-        com.squareup.okhttp.Call call = sendHashValidateBeforeCall(token, account, user, password, hash, coin, test, progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = sendHashValidateBeforeCall(token, account, user, password, hash, blockchainNetwork, test, progressListener, progressRequestListener);
         Type localVarReturnType = new TypeToken<SingleResult>(){}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
