@@ -20,9 +20,11 @@ public class Blockchain {
 	private String pass;
 
 	/**
-	 * 
-	 * @param Arquivo que sera registrado na BLockchain
-	 * @return Inteiro contentdo o ID da transação validada
+	 * Registro um hash (bytearray) a partir de um arquivo
+	 * @param file Arquivo que sera registrado na BLockchain
+	 * @param blockchainNetwork qual a rede blockchain o registro deverá ser feito
+	 * @param testMode indica se o registro deve ser feito na rede de teste ou na rede principal
+	 * @return Texto de numero inteiro contentdo o ID da transação validada
 	 * @throws IOException
 	 * @throws ApiException
 	 */
@@ -39,7 +41,7 @@ public class Blockchain {
 		String hash = DoubleSha256.hashFile(bytesFile);
 		token = getMyToken();
 
- 		SendApi api = new SendApi();
+		SendApi api = new SendApi();
 		SingleResult singleResult = api.sendHash(token, account, user, pass, hash, blockchainNetwork, testMode); 
 
 		if (singleResult.getResult() != null && singleResult.getStatus()) {
