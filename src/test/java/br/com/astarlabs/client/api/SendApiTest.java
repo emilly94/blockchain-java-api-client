@@ -17,8 +17,9 @@ import org.junit.Ignore;
 import org.junit.Test;
 
 import br.com.astarlabs.client.ApiException;
-import br.com.astarlabs.client.api.SendApi;
+import br.com.astarlabs.client.model.BlockchainNetwork;
 import br.com.astarlabs.client.model.SingleResult;
+import br.com.astarlabs.util.Blockchain;
 
 /**
  * API tests for SendApi
@@ -45,9 +46,9 @@ public class SendApiTest {
         String user = null;
         String password = null;
         String base64 = null;
-        String coin = null;
+        BlockchainNetwork blockchainNetwork = null;
         Integer test = 1;
-        SingleResult response = api.sendFile(token, account, user, password, base64, coin, test);
+        SingleResult response = api.sendFile(token, account, user, password, base64, blockchainNetwork, test);
 
         // TODO: test validations
     }
@@ -68,9 +69,9 @@ public class SendApiTest {
         String user = null;
         String password = null;
         String address = null;
-        String coin = null;
+        BlockchainNetwork blockchainNetwork = null;
         Integer test = null;
-        SingleResult response = api.sendPayAddress(token, account, user, password, address, coin, test);
+        SingleResult response = api.sendPayAddress(token, account, user, password, address, blockchainNetwork, test);
 
         // TODO: test validations
     }
@@ -91,11 +92,25 @@ public class SendApiTest {
         String user = null;
         String password = null;
         String string = null;
-        String coin = null;
+        BlockchainNetwork blockchainNetwork = null;
         Integer test = null;
-        SingleResult response = api.sendString(token, account, user, password, string, coin, test);
+        SingleResult response = api.sendString(token, account, user, password, string, blockchainNetwork, test);
 
         // TODO: test validations
     }
+    
+    @Ignore
+    @Test
+    public void sendHashTest() throws ApiException {
+    	
+    	Blockchain blockchain = new Blockchain("", 0, "", "");
+    	
+     	String reg = blockchain.registrarDocumento("registrodeText1231".getBytes(), BlockchainNetwork.ETHEREUM_CLASSIC, 0);
+    	System.out.println(reg);
+    	
+    	
+    	
+    }
+    
     
 }

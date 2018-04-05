@@ -1,13 +1,84 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>com.astarlabs</groupId>
 	<artifactId>bitcoin-java-api-client</artifactId>
-	<packaging>jar</packaging>
 	<name>bitcoin-java-api-client</name>
-	<version>1.1.2</version>
+	<version>1.2.0</version>
+	<packaging>jar</packaging>
 	<url>https://github.com/astarlabs/bitcoin-java-api-client</url>
 	<description>Astarlabs Java Bitcoin API client</description>
+
+	<properties>
+		<java.version>1.7</java.version>
+		<maven.compiler.source>${java.version}</maven.compiler.source>
+		<maven.compiler.target>${java.version}</maven.compiler.target>
+		<swagger-core-version>1.5.12</swagger-core-version>
+		<okhttp-version>2.7.5</okhttp-version>
+		<gson-version>2.6.2</gson-version>
+		<jodatime-version>2.9.3</jodatime-version>
+		<jose4j-version>0.5.5</jose4j-version>
+		<maven-plugin-version>1.0.0</maven-plugin-version>
+		<junit-version>4.12</junit-version>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+	</properties>
+
+	<dependencies>
+		<dependency>
+			<groupId>io.swagger</groupId>
+			<artifactId>swagger-annotations</artifactId>
+			<version>${swagger-core-version}</version>
+		</dependency>
+		<dependency>
+			<groupId>com.squareup.okhttp</groupId>
+			<artifactId>okhttp</artifactId>
+			<version>${okhttp-version}</version>
+		</dependency>
+		<dependency>
+			<groupId>com.squareup.okhttp</groupId>
+			<artifactId>logging-interceptor</artifactId>
+			<version>${okhttp-version}</version>
+		</dependency>
+		<dependency>
+			<groupId>com.google.code.gson</groupId>
+			<artifactId>gson</artifactId>
+			<version>${gson-version}</version>
+		</dependency>
+		<dependency>
+			<groupId>joda-time</groupId>
+			<artifactId>joda-time</artifactId>
+			<version>${jodatime-version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.bitbucket.b_c</groupId>
+			<artifactId>jose4j</artifactId>
+			<version>${jose4j-version}</version>
+		</dependency>
+
+		<!-- https://mvnrepository.com/artifact/org.bouncycastle/bcprov-jdk15on -->
+		<dependency>
+			<groupId>org.bouncycastle</groupId>
+			<artifactId>bcprov-jdk15on</artifactId>
+			<version>1.56</version>
+		</dependency>
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<version>${junit-version}</version>
+			<scope>test</scope>
+		</dependency>
+
+
+		<dependency>
+			<groupId>org.slf4j</groupId>
+			<artifactId>slf4j-simple</artifactId>
+			<version>1.7.21</version>
+		</dependency>
+	</dependencies>
+
+
+
 	<prerequisites>
 		<maven>2.2.0</maven>
 	</prerequisites>
@@ -23,18 +94,23 @@
 	<developers>
 		<developer>
 			<name>Reginaldo Costa</name>
-			<email>reginaldo@astarlabs.com</email>
+			<organization>AstarLabs</organization>
+			<organizationUrl>https://www.astarlabs.com/</organizationUrl>
+		</developer>
+		<developer>
+			<name>JC Bombardelli</name>
+			<email>jc@astarlabs.com</email>
 			<organization>AstarLabs</organization>
 			<organizationUrl>https://www.astarlabs.com/</organizationUrl>
 		</developer>
 	</developers>
 
 	<distributionManagement>
-        <repository>
-            <id>myMavenRepo.write</id>
-            <url>https://mymavenrepo.com/repo/pMfxLKkrHNX8QfyC24xw/</url>
-        </repository>
-    </distributionManagement>
+		<repository>
+			<id>myMavenRepo.write</id>
+			<url>https://mymavenrepo.com/repo/pMfxLKkrHNX8QfyC24xw/</url>
+		</repository>
+	</distributionManagement>
 
 	<build>
 		<plugins>
@@ -174,62 +250,4 @@
 		</profile>
 	</profiles>
 
-	<dependencies>
-		<dependency>
-			<groupId>io.swagger</groupId>
-			<artifactId>swagger-annotations</artifactId>
-			<version>${swagger-core-version}</version>
-		</dependency>
-		<dependency>
-			<groupId>com.squareup.okhttp</groupId>
-			<artifactId>okhttp</artifactId>
-			<version>${okhttp-version}</version>
-		</dependency>
-		<dependency>
-			<groupId>com.squareup.okhttp</groupId>
-			<artifactId>logging-interceptor</artifactId>
-			<version>${okhttp-version}</version>
-		</dependency>
-		<dependency>
-			<groupId>com.google.code.gson</groupId>
-			<artifactId>gson</artifactId>
-			<version>${gson-version}</version>
-		</dependency>
-		<dependency>
-			<groupId>joda-time</groupId>
-			<artifactId>joda-time</artifactId>
-			<version>${jodatime-version}</version>
-		</dependency>
-		<dependency>
-			<groupId>org.bitbucket.b_c</groupId>
-			<artifactId>jose4j</artifactId>
-			<version>${jose4j-version}</version>
-		</dependency>
-
-		<!-- https://mvnrepository.com/artifact/org.bouncycastle/bcprov-jdk15on -->
-		<dependency>
-			<groupId>org.bouncycastle</groupId>
-			<artifactId>bcprov-jdk15on</artifactId>
-			<version>1.56</version>
-		</dependency>
-		<dependency>
-			<groupId>junit</groupId>
-			<artifactId>junit</artifactId>
-			<version>${junit-version}</version>
-			<scope>test</scope>
-		</dependency>
-	</dependencies>
-	<properties>
-		<java.version>1.7</java.version>
-		<maven.compiler.source>${java.version}</maven.compiler.source>
-		<maven.compiler.target>${java.version}</maven.compiler.target>
-		<swagger-core-version>1.5.12</swagger-core-version>
-		<okhttp-version>2.7.5</okhttp-version>
-		<gson-version>2.6.2</gson-version>
-		<jodatime-version>2.9.3</jodatime-version>
-		<jose4j-version>0.5.5</jose4j-version>
-		<maven-plugin-version>1.0.0</maven-plugin-version>
-		<junit-version>4.12</junit-version>
-		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-	</properties>
 </project>
