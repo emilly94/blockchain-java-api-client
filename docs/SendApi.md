@@ -30,7 +30,7 @@ Integer account = 56; // Integer | API ID for Account where the coins must be sp
 String user = "user_example"; // String | API user name.
 String password = "password_example"; // String | API user password.
 String base64 = "base64_example"; // String | base64 encoded file.
-String coin = "coin_example"; // String | the coin name - bitcoin/litecoin.
+BlockchainNetwork blockchainNetwork = "BlockchainNetwork.Ethereum"; // Enum | blockchain network name - Ethereum/Ethereum Classic.
 Integer test = 56; // Integer | if test = 1 so use testnet else test = 0 for mainnet.
 try {
     SingleResult result = apiInstance.sendFile(token, account, user, password, base64, coin, test);
@@ -87,7 +87,7 @@ Integer account = 56; // Integer | API ID for Account where the coins must be sp
 String user = "user_example"; // String | API user name.
 String password = "password_example"; // String | API user password.
 String address = "address_example"; // String | Address to send the amount.
-String coin = "coin_example"; // String | the coin name - bitcoin/litecoin.
+BlockchainNetwork blockchainNetwork = "BlockchainNetwork.Ethereum"; // Enum | blockchain network name - Ethereum/Ethereum Classic.
 Integer test = 56; // Integer | if test = 1 so use testnet else test = 0 for mainnet.
 try {
     SingleResult result = apiInstance.sendPayAddress(token, account, user, password, address, coin, test);
@@ -144,7 +144,7 @@ Integer account = 56; // Integer | API ID for Account where the coins must be sp
 String user = "user_example"; // String | API user name.
 String password = "password_example"; // String | API user password.
 String string = "string_example"; // String | string to send.
-String coin = "coin_example"; // String | the coin name - bitcoin/litecoin.
+BlockchainNetwork blockchainNetwork = "BlockchainNetwork.Ethereum"; // Enum | blockchain network name - Ethereum/Ethereum Classic.
 Integer test = 56; // Integer | if test = 1 so use testnet else test = 0 for mainnet.
 try {
     SingleResult result = apiInstance.sendString(token, account, user, password, string, coin, test);
@@ -164,7 +164,7 @@ Name | Type | Description  | Notes
  **user** | **String**| API user name. |
  **password** | **String**| API user password. |
  **string** | **String**| string to send. |
- **coin** | **String**| the coin name - bitcoin/litecoin. |
+ **blockchainNetwork** | **String**| the blockchain network name - ethereum/ethereum-classic. |
  **test** | **Integer**| if test &#x3D; 1 so use testnet else test &#x3D; 0 for mainnet. |
 
 ### Return type

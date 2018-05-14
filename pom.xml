@@ -3,12 +3,12 @@
 
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>com.astarlabs</groupId>
-	<artifactId>bitcoin-java-api-client</artifactId>
-	<name>bitcoin-java-api-client</name>
-	<version>1.2.0</version>
+	<artifactId>blockchain-java-api-client</artifactId>
+	<name>blockchain-java-api-client</name>
+	<version>1.2.1</version>
 	<packaging>jar</packaging>
-	<url>https://github.com/astarlabs/bitcoin-java-api-client</url>
-	<description>Astarlabs Java Bitcoin API client</description>
+	<url>https://github.com/astarlabs/blockchain-java-api-client</url>
+	<description>Astarlabs Java Blockchain API client</description>
 
 	<properties>
 		<java.version>1.7</java.version>
@@ -25,31 +25,37 @@
 	</properties>
 
 	<dependencies>
+
 		<dependency>
 			<groupId>io.swagger</groupId>
 			<artifactId>swagger-annotations</artifactId>
 			<version>${swagger-core-version}</version>
 		</dependency>
+
 		<dependency>
 			<groupId>com.squareup.okhttp</groupId>
 			<artifactId>okhttp</artifactId>
 			<version>${okhttp-version}</version>
 		</dependency>
+
 		<dependency>
 			<groupId>com.squareup.okhttp</groupId>
 			<artifactId>logging-interceptor</artifactId>
 			<version>${okhttp-version}</version>
 		</dependency>
+
 		<dependency>
 			<groupId>com.google.code.gson</groupId>
 			<artifactId>gson</artifactId>
 			<version>${gson-version}</version>
 		</dependency>
+
 		<dependency>
 			<groupId>joda-time</groupId>
 			<artifactId>joda-time</artifactId>
 			<version>${jodatime-version}</version>
 		</dependency>
+
 		<dependency>
 			<groupId>org.bitbucket.b_c</groupId>
 			<artifactId>jose4j</artifactId>
