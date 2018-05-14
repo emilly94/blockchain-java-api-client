@@ -1,4 +1,4 @@
-# Bitcoin Java API Client
+# Blockchain Java API Client
 
 For more information, please visit [http://www.astarlabs.com](http://www.astarlabs.com)
 
@@ -29,15 +29,15 @@ Add this dependency to your project's POM:
 ```xml
 <repository>
     <id>astarlabs-maven-repo</id>
-    <url>https://mymavenrepo.com/repo/sk03Wn0AHtyMwB3QU3GQ/</url>
+    <url>https://mymavenrepo.com/repo/LkfjrFnMHsJ7GZmQVlh7/</url>
 </repository>
 ```
 
 ```xml
 <dependency>
     <groupId>com.astarlabs</groupId>
-    <artifactId>bitcoin-java-api-client</artifactId>
-    <version>1.1.2</version>
+    <artifactId>blockchain-java-api-client</artifactId>
+    <version>1.2.1</version>
     <scope>compile</scope>
 </dependency>
 ```
@@ -47,7 +47,7 @@ Add this dependency to your project's POM:
 Add this dependency to your project's build file:
 
 ```groovy
-compile "com.astarlabs:bitcoin-java-api-client:1.1.2"
+compile "com.astarlabs:bitcoin-java-api-client:1.2.1"
 ```
 
 ### Others
@@ -58,7 +58,7 @@ At first generate the JAR by executing:
 
 Then manually install the following JARs:
 
-* target/bitcoin-java-api-client-1.1.2.jar
+* target/blockchain-java-api-client-1.2.1.jar
 * target/lib/*.jar
 
 ## Getting Started
