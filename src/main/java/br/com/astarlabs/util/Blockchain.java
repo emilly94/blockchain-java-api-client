@@ -39,16 +39,22 @@ public class Blockchain {
 
 	public String registrarDocumento(byte[] bytesFile, final BlockchainNetwork blockchainNetwork, final Integer testMode) throws ApiException {
 		String hash = DoubleSha256.hashFile(bytesFile);
+
+		return registrarConteudo(hash,blockchainNetwork,testMode);
+	}
+
+	public String registrarConteudo(String string, final BlockchainNetwork blockchainNetwork, final Integer testMode) throws ApiException {
+		String hash = string;
 		token = getMyToken();
 
 		SendApi api = new SendApi();
-		SingleResult singleResult = api.sendHash(token, account, user, pass, hash, blockchainNetwork, testMode); 
+		SingleResult singleResult = api.sendHash(token, account, user, pass, hash, blockchainNetwork, testMode);
 
 		if (singleResult.getResult() != null && singleResult.getStatus()) {
 			return singleResult.getResult();
 		}
 
-		return null;	
+		return null;
 	}
 
 	/**
