@@ -28,27 +28,27 @@ public class Blockchain {
 	 * @throws IOException
 	 * @throws ApiException
 	 */
-	public String registrarDocumento(File file, final BlockchainNetwork blockchainNetwork, final Integer testMode) throws IOException, ApiException {
-		return registrarDocumento(Files.readAllBytes(file.toPath()), blockchainNetwork, testMode);
+	public String registrarDocumento(File file, final BlockchainNetwork blockchainNetwork, final Integer testMode, final Boolean isForce) throws IOException, ApiException {
+		return registrarDocumento(Files.readAllBytes(file.toPath()), blockchainNetwork, testMode, isForce);
 
 	}
 
-	public String registrarDocumento(String fileString, final BlockchainNetwork blockchainNetwork, final Integer testMode) throws ApiException {
-		return registrarDocumento(fileString.getBytes(), blockchainNetwork, testMode);
+	public String registrarDocumento(String fileString, final BlockchainNetwork blockchainNetwork, final Integer testMode, final Boolean isForce) throws ApiException {
+		return registrarDocumento(fileString.getBytes(), blockchainNetwork, testMode, isForce);
 	}
 
-	public String registrarDocumento(byte[] bytesFile, final BlockchainNetwork blockchainNetwork, final Integer testMode) throws ApiException {
+	public String registrarDocumento(byte[] bytesFile, final BlockchainNetwork blockchainNetwork, final Integer testMode, final Boolean isForce) throws ApiException {
 		String hash = DoubleSha256.hashFile(bytesFile);
 
-		return registrarConteudo(hash,blockchainNetwork,testMode);
+		return registrarConteudo(hash, blockchainNetwork, testMode, isForce);
 	}
 
-	public String registrarConteudo(String string, final BlockchainNetwork blockchainNetwork, final Integer testMode) throws ApiException {
+	public String registrarConteudo(String string, final BlockchainNetwork blockchainNetwork, final Integer testMode, final Boolean isForce) throws ApiException {
 		String hash = string;
 		token = getMyToken();
 
 		SendApi api = new SendApi();
-		SingleResult singleResult = api.sendHash(token, account, user, pass, hash, blockchainNetwork, testMode);
+		SingleResult singleResult = api.sendHash(token, account, user, pass, hash, blockchainNetwork, testMode, isForce);
 
 		if (singleResult.getResult() != null && singleResult.getStatus()) {
 			return singleResult.getResult();
